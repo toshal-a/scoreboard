@@ -17,14 +17,14 @@ The following are endpoints for given app
 2)To get details of a match
   walragatver.pythonanywhere.com/match
   
- 3) To post a new ball use
+3) To post a new ball use
   walragatver.pythonanywhere.com/match
   
 Assumptions while making the app
- a) Each ball has run which are not counted in extra
- b) Oversummary has runs including extra runs
- c) There are only two players
- d) When there is "BYE" those runs will not be added in the player score
- e) An over summary will contain the no of runs made by a player during that over
- f) Match Summary will contain total runs and the number of extra runs in the total
+a) Each ball has run which are not counted in extra
+b) Oversummary has runs including extra runs
+c) There are only two players
+d) When there is "BYE" those runs will not be added in the player score
+e) An over summary will contain the no of runs made by a player during that over
+f) Match Summary will contain total runs and the number of extra runs in the total
  
