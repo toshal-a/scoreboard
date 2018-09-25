@@ -118,14 +118,28 @@ class MatchInfo(Resource):
             overs[over_num]['runs']+=run
             if wicket:
                 overs[over_num]['wickets']+=1
-                overs[over_num]['extras']+=1
+            if extra == 'NB':
+                extra = 1
+                overs[over_num]['runs']+=1
+            elif extra == 'WD':
+                extra = 1
+                overs[over_num]['runs']+=1
+            elif extra == 'BYE':
+                extra = run
+                run = 0
+            elif extra != None:
+                del overs[over_num][ball_num]
+                overs[over_num]['runs']-=run
+                if wicket:overs[over_num]['wickets']-=1
+                return abort(404, message="Invalid Parameter Extra")
+            overs[over_num]['extras']+=extra
             if player_id==1:
                 overs[over_num]['player1_score']+=run
             else:
                 overs[over_num]['player2_score']+=run
-            return overs[over_num][ball_num], 201]
+            return overs[over_num][ball_num], 201
         else:
-            return abort(404, message="Ball {} Already exist".format(over_id))
+            return abort(404, message="Ball {} Already exist".format(ball_num))
 ##
 ## Actually setup the Api resource routing here
 ##
