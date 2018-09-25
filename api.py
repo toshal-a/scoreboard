@@ -108,21 +108,24 @@ class MatchInfo(Resource):
             overs[over_num]['player1_score']=0
             overs[over_num]['player2_score']=0
 
-        overs[over_num][ball_num] = {
-            'run': run,
-            'wicket':wicket,
-            'extra':extra,
-            'player_id': player_id,
-        }
-        overs[over_num]['runs']+=run
-        if wicket:
-            overs[over_num]['wickets']+=1
-        overs[over_num]['extras']+=1
-        if player_id==1:
-            overs[over_num]['player1_score']+=run
+        if overs[over_num].get(ball_num,0)==0:
+            overs[over_num][ball_num] = {
+                'run': run,
+                'wicket':wicket,
+                'extra':extra,
+                'player_id': player_id,
+                }
+            overs[over_num]['runs']+=run
+            if wicket:
+                overs[over_num]['wickets']+=1
+                overs[over_num]['extras']+=1
+            if player_id==1:
+                overs[over_num]['player1_score']+=run
+            else:
+                overs[over_num]['player2_score']+=run
+            return overs[over_num][ball_num], 201]
         else:
-            overs[over_num]['player2_score']+=run
-        return overs[over_num][ball_num], 201
+            return abort(404, message="Ball {} Already exist".format(over_id))
 ##
 ## Actually setup the Api resource routing here
 ##
