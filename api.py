@@ -47,6 +47,11 @@ overs = {
 			'extra':None,
 			'player_id': 1,
 		},
+        'runs':9,
+		'wickets':0,
+		'Extras':0,
+		'player1 score':9,
+		'player2 score':0,
 	},
 	'over2':{
 		'ball1':{
@@ -85,6 +90,11 @@ overs = {
 			'extra':None,
 			'player_id': 2,
 		},
+        'runs':5,
+		'wickets':0,
+		'Extras':0,
+		'player1 score':11,
+		'player2 score':4,
 	},
 	'over3':{
 		'ball1':{
@@ -122,130 +132,103 @@ overs = {
 			'wicket':False,
 			'extra':None,
 			'player_id': 1,
-		}
-	},
-	'over4':{
-		'ball1':{
-			'run': 1,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
 		},
-		'ball2':{
-			'run': 1,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball3':{
-			'run': 0,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball4':{
-			'run': 0,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball5':{
-			'run': 0,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball6':{
-			'run': 3,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-	},
-	'over5':{
-		'ball1':{
-			'run': 1,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball2':{
-			'run': 1,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball3':{
-			'run': 0,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball4':{
-			'run': 0,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball5':{
-			'run': 0,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-		'ball6':{
-			'run': 3,
-			'wicket':False,
-			'extra':None,
-			'player_id': 1,
-		},
-	},
-
-}
-overSummary={
-	'over1':{
-		'runs':9,
-		'wickets':0,
-		'Extras':0,
-		'player1 score':9,
-		'player2 score':0,
-	},
-	'over2':{
-		'runs':5,
+        'runs':5,
 		'wickets':0,
 		'Extras':0,
 		'player1 score':11,
 		'player2 score':4,
 	},
-	'over3':{
-		'runs':9,
+	'over4':{
+		'ball1':{
+			'run': 1,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball2':{
+			'run': 1,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball3':{
+			'run': 0,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball4':{
+			'run': 0,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball5':{
+			'run': 0,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball6':{
+			'run': 3,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+        'runs':5,
 		'wickets':0,
 		'Extras':0,
-		'player1 score':9,
-		'player2 score':0,
-	},
-	'over4':{
-		'runs':10,
-		'wickets':110,
-		'Extras':0,
-		'player1 score':190,
-		'player2 score':111,
+		'player1 score':11,
+		'player2 score':4,
 	},
 	'over5':{
-		'runs':9,
+		'ball1':{
+			'run': 1,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball2':{
+			'run': 1,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball3':{
+			'run': 0,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball4':{
+			'run': 0,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball5':{
+			'run': 0,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+		'ball6':{
+			'run': 3,
+			'wicket':False,
+			'extra':None,
+			'player_id': 1,
+		},
+        'runs':5,
 		'wickets':0,
 		'Extras':0,
-		'player1 score':9,
-		'player2 score':0,
-	}
+		'player1 score':11,
+		'player2 score':4,
+	},
+
 }
-matchSummary= {
-	'runs':50,
-	'wickets':3,
-	'Extras':13,
-	'player1 score':22,
-	'player2 score':28,
-}
+
+
 def abort_if_over_doesnt_exist(over_id):
 	if over_id not in overSummary:
 		abort(404, message="Over {} doesn't exist".format(over_id))
@@ -264,7 +247,7 @@ class OverInfo(Resource):
 	def get(self,over_id):
 		over_id='over%i' % over_id
 		abort_if_over_doesnt_exist(over_id)
-		return overSummary[over_id]
+		return overs[over_id]
 
 # TodoList
 # shows a list of all todos, and lets you POST to add new tasks
