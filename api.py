@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_restful import reqparse, abort, Api, Resource
+from flask_restful import reqparse, abort, Api, Resource,inputs
 
 app = Flask(__name__)
 api = Api(app)
@@ -61,12 +61,12 @@ def abort_if_over_doesnt_exist(over_id):
 		abort(404, message="Over {} doesn't exist".format(over_id))
 
 parser = reqparse.RequestParser()
-parser.add_argument('over_num',type = int)
-parser.add_argument('ball_num',type = int)
-parser.add_argument('run',type = int)
-parser.add_argument('wicket',type = bool)
-parser.add_argument('extra',type = str)
-parser.add_argument('player_id',type = int)
+parser.add_argument('over_num',type=int)
+parser.add_argument('ball_num',type=int)
+parser.add_argument('run',type=int)
+parser.add_argument('wicket',type=inputs.boolean)
+parser.add_argument('extra',type=str)
+parser.add_argument('player_id',type=int)
 
 # Todo
 # shows a single todo item and lets you delete a todo item
@@ -93,7 +93,7 @@ class MatchInfo(Resource):
             matchSummary['extras'] =matchSummary.get('extras',0)+overs[ov]['extras']
             matchSummary['player1_score'] =matchSummary.get('player1_score',0)+overs[ov]['player1_score']
             matchSummary['player2_score'] =matchSummary.get('player2_score',0)+overs[ov]['player2_score']
-        return overs
+        return matchSummary
     def post(self):
         args = parser.parse_args()
         over_num = args['over_num']
